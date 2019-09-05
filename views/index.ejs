@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>My Twilio App</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet'>
+    <style>
+      #pad{
+        margin-left: 5vh !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <h3 class="text-light">BAAT-CHEET</h3>
+        </div>
+      </nav>
+    </header>
+    <br><br>
+  
+    <div class="container">
+      <form method="post" action="/" onsubmit="return validateForm()">
+
+        <div class="row">
+          <div class="col-md-8">
+              <div class="form-group">
+                <label for="text">Enter your text</label>
+                <textarea class="form-control" id="text" rows="3" name="text" required></textarea>
+              </div>    
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="select">Contacts</label>
+              <select class="form-control" id="select" name="contacts">
+                <% if (locals.names){ %>
+                  <% for(let i=0; i<names.length; i++) {%>
+                      <option><%= names[i]['name']%></option>
+                  <% } %>
+                 <% } %>
+                <!--<option>Alec</option>
+                <option>Dominic</option>
+                <option>Ezikiel</option>-->
+              </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary" id="pad">Send SMS</button>
+      </form>
+    </div>
+    <br><br>
+    <div class="container">
+       <% if(locals.message){ %>
+        <div class="alert alert-primary" role="alert">
+           <%=message %>
+        </div>
+      <% } %>
+
+      <% if(locals.error){ %>
+        <div class="alert alert-danger" role="alert">
+           <%=error %>
+        </div>
+      <% } %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      function validateForm(){
+        let message = document.getElementById('text').value;
+        message=message.trim();
+        if(message == ''){
+          alert('Enter a text message');
+          return false;
+        }
+        else
+          return true;   
+      }
+    </script>
+  </body>
+</html>

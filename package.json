@@ -1,0 +1,27 @@
+{
+  "name": "smsapp",
+  "version": "1.0.0",
+  "description": "Send and Receive sms via Node",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "keywords": [
+    "Twilio",
+    "Javascript",
+    "SMS",
+    "Call",
+    "Send",
+    "Receive"
+  ],
+  "author": "Alec Aldrine Lakra",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.12",
+    "twilio": "^3.33.4"
+  }
+}
